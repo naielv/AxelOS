@@ -51,7 +51,12 @@ $.extend(explorer, {
 		]).callback(function() {
 			var win = this;
 			var body = this.body;
-			body.html('<h3>Haz clic en Archivo > Iniciar Sesión</h3>');
+			if (netlifyIdentity.currentUser() == undefined | netlifyIdentity.currentUser() == null ) {
+				body.html('<h3>Haz clic en Archivo > Iniciar Sesión</h3>');
+			}
+			else {
+				body.html('<h3>Fuera de servicio</h3>');
+			}
 		});
 		$(`
 		<style>
