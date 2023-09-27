@@ -55,7 +55,7 @@ new explorer.window()
 	}
 	#`+open+` .d::before, #`+open+` .f::before {
 		position:absolute;
-		line-height:95px;
+		line-height:97px;
 		color:white;
 		content:'EuskadiTech';
 		font-size:25px;
