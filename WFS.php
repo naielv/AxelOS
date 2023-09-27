@@ -5,7 +5,9 @@ function wfsBuild($dir) {
         if($node == '.')          continue;
         if($node == '..')         continue;
         if($node == '.git')       continue;
-        if($node == '.github/workflows/static.yml')       continue;
+        if($node == 'static.yml')       continue;
+        if($node == 'workflows')       continue;
+        if($node == '.github')       continue;
         if($node == 'Thumbs.db')  continue;
         if($node == 'CNAME')      continue;
         if($node == '.gitignore') continue;
