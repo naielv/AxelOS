@@ -34,7 +34,16 @@ $.extend(explorer, {
 				}, {
 					title: "Iniciar Sesión",
 					callback: function() {
+						netlifyIdentity.init({
+							container: "body", // defaults to document.body
+							locale: 'es' // defaults to 'en'
+						  });
 						netlifyIdentity.open();
+					}
+				}, {
+					title: "DEBUGCHECK",
+					callback: function() {
+						alert(netlifyIdentity.currentUser())
 					}
 				}
 			]
