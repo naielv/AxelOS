@@ -31,13 +31,18 @@ $.extend(explorer, {
 					callback: function() {
 						win.close();
 					}
+				}, {
+					title: "Iniciar Sesión",
+					callback: function() {
+						netlifyIdentity.open();
+					}
 				}
 			]
 		}
 		]).callback(function() {
 			var win = this;
 			var body = this.body;
-			body.html('<h1>Este PC no tiene un numero serial valido.</h1>');
+			body.html('<h3>Haz clic en Archivo > Iniciar Sesión</h3>');
 		});
 		$(`
 		<style>
