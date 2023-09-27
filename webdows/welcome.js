@@ -23,7 +23,17 @@ new explorer.window()
 			text: 'TechEus',
 			icon: 'webdows/resources/icons/balg.svg',
 			callback: function() {
-				system.error("El ejecutable 'open-website' no existe.")
+				system.loader('programs/Web Explorer/we.js');
+				setTimeout(function(){
+					document.getElementsByClassName("i1")[0].value = "https://tech.eus"
+					document.getElementsByClassName("b3")[0].click()
+				}, 1500);
+			}
+		}, {
+			text: 'Archivos',
+			icon: 'webdows/resources/icons/info.ico',
+			callback: function() {
+				explorer.explorer()
 			}
 		}
 	];
