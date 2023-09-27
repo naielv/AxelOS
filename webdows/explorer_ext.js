@@ -37,7 +37,7 @@ $.extend(explorer, {
 		]).callback(function() {
 			var win = this;
 			var body = this.body;
-			body.html('<h1>WFS no esta disponible.</h1>');
+			body.html('<h1>Este PC no tiene un numero serial valido.</h1>');
 		});
 		$(`
 		<style>
