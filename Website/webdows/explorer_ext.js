@@ -59,10 +59,8 @@ $.extend(explorer, {
 				var url = "https://orange-fortnight-qj9g59vgg47h6wx6-8000.app.github.dev/files";
 
 				xmlhttp.onreadystatechange = function() {
-					if (this.readyState == 4 && this.status == 200) {
-						var myArr = JSON.parse(this.responseText);
-						alert(myArr);
-					}
+					var myArr = JSON.parse(this.responseText);
+					alert(myArr);
 					body.html('<h3>Fuera de servicio</h3>');
 				};
 				xmlhttp.open("GET", url, true);
