@@ -51,12 +51,23 @@ $.extend(explorer, {
 		]).callback(function() {
 			var win = this;
 			var body = this.body;
-			if (netlifyIdentity.currentUser() == undefined | netlifyIdentity.currentUser() == null ) {
-				body.html('<h3>Haz clic en Archivo > Iniciar Sesión</h3>');
-			}
-			else {
+			//if (netlifyIdentity.currentUser() == undefined | netlifyIdentity.currentUser() == null ) {
+			//	body.html('<h3>Haz clic en Archivo > Iniciar Sesión</h3>');
+			//}
+			//else {
+				var xmlhttp = new XMLHttpRequest();
+				var url = "https://orange-fortnight-qj9g59vgg47h6wx6-8000.app.github.dev/files";
+
+				xmlhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+						var myArr = JSON.parse(this.responseText);
+						alert(myArr);
+					}
+				};
+				xmlhttp.open("GET", url, true);
+				xmlhttp.send();
 				body.html('<h3>Fuera de servicio</h3>');
-			}
+			//}
 		});
 		$(`
 		<style>
