@@ -63,10 +63,10 @@ $.extend(explorer, {
 						var myArr = JSON.parse(this.responseText);
 						alert(myArr);
 					}
+					body.html('<h3>Fuera de servicio</h3>');
 				};
 				xmlhttp.open("GET", url, true);
 				xmlhttp.send();
-				body.html('<h3>Fuera de servicio</h3>');
 			//}
 		});
 		$(`
