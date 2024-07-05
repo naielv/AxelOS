@@ -13,7 +13,7 @@ new explorer.window()
 	var win = this;
 	var body = this.body;
 	body.css({'background-color':'#000','color':'white'});
-	body.html('<div>EuskadiTech AxelOS [Version 0.0.00001]<br>(R) EuskadiTech.<br><br></div><span>$></span><input>');
+	body.html('<div>EuskadiTech(TM) Web14<br><br></div><span>$></span><input>');
 	body.find('span').attr('style', 'height:20px;width:20px;');
 	body.find('input').css({'cursor':'default','font-family':'NotoSans','font-size':'16px','height':'20px','width':'calc(100% - 20px)','border':'none','box-shadow':'none','background-color':'black','color':'white'}).focus();
 	var history = [];

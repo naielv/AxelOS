@@ -6,7 +6,7 @@ Date: 03/20/16
 File: webdows/welcome.js
 */
 new explorer.window()
-.title('Bienvenid@ a AxelOS')
+.title('Bienvenid@ a Web14')
 .resize(570, 300)
 .center()
 .icon('webdows/resources/icons/logo.png')
@@ -20,7 +20,7 @@ new explorer.window()
 				system.loader('webdows/webver.js');
 			}
 		}, {
-			text: 'TechEus',
+			text: 'EuskadiTech',
 			icon: 'webdows/resources/icons/balg.svg',
 			callback: function() {
 				system.error("El ejecutable 'open-website' no existe.")
@@ -29,7 +29,7 @@ new explorer.window()
 	];
 	var body = this.body;
 	body.css({'padding-top':'100px','text-align':'center','overflow-x':'hidden'});
-	body.html('<div class="topframe"><div class="welc">Bienvenid@</div><div class="stat">AxelOS 6</div></div>');
+	body.html('<div class="topframe"><div class="welc">Bienvenid@</div><div class="stat">Web14</div></div>');
 	$.each(butts, function() {
 		var buttID = system.guid();
 		body.append('<button buttID="'+buttID+'" class="butt"><span style="background-image:url(\''+this.icon+'\');" class="icon"></span>'+this.text+'</button>');

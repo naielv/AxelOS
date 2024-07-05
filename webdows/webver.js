@@ -9,7 +9,7 @@ new explorer.window()
 .resize(450, 400)
 .center()
 .controls([])
-.title('Sobre AxelOS')
+.title('Sobre Web14')
 .icon('webdows/resources/icons/info.ico')
 .callback(function() {
 	var win = this;
@@ -19,13 +19,13 @@ new explorer.window()
 		<center>
 			<span style="font-size:33px;">
 				<img style="margin-right:5px;vertical-align:-20px;width:64px;height:64px;" src="webdows/resources/explorer/webdows/so3.png">
-				AxelOS <span id="lv">...</span>
+				Web14 <span id="lv">...</span>
 			</span>
 		</center>
 		<div>
-			EuskadiTech AxelOS | Version <span id="version">...</span><span style="float:right;" id="showing">...</span>
+			EuskadiTech Web14 | Versión <span id="version">...</span><span style="float:right;" id="showing">...</span>
 			<pre>Loading license, Please wait...</pre>
-			<span style="float:right;">AxelOS NO esta afiliado con Microsoft</span>
+			<span style="float:right;">Web14 NO esta afiliado con Microsoft</span>
 		</div>
 		<button class="credits">...</button>
 		<button class="ok">Ok</button>
