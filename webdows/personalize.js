@@ -22,7 +22,7 @@ new explorer.window()
 	var background = '';
 	this.body
 	.attr('style', 'text-align:center;padding-top:5px;')
-	.html('AxelOS: <input value="webdows" type="radio" name="theme"> | Basico: <input value="basic" type="radio" name="theme"> | Clasico: <input value="classic" type="radio" name="theme"><img class="webdows" src="webdows/resources/explorer/webdows/thumbnail.png"><img class="bg"><img class="classic" src="webdows/resources/explorer/classic/thumbnail.png"><img class="basic" src="webdows/resources/explorer/basic/thumbnail.png"><br><input type="color" title="Elige un color de tema"><button class="bac" title="Elige un fondo">Fondo</button><button class="sav">Guardar</button><button class="app">Aplicar</button><button class="can">Cancelar</button>')
+	.html('Web14: <input value="webdows" type="radio" name="theme"> | Basico: <input value="basic" type="radio" name="theme"> | Clasico: <input value="classic" type="radio" name="theme"><img class="webdows" src="webdows/resources/explorer/webdows/thumbnail.png"><img class="bg"><img class="classic" src="webdows/resources/explorer/classic/thumbnail.png"><img class="basic" src="webdows/resources/explorer/basic/thumbnail.png"><br><input type="color" title="Elige un color de tema"><button class="bac" title="Elige un fondo">Fondo</button><button class="sav">Guardar</button><button class="app">Aplicar</button><button class="can">Cancelar</button>')
 	.find('img')
 	.attr('style', 'width:310px;height:180px;margin:3px;display:inline-block;display:none;padding:2px;');
 	this.body.find('.sav, .app, .can')
