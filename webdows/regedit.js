@@ -38,7 +38,7 @@ new explorer.window()
 	}
 	function editKey(path, isNew) {
 		new explorer.window()
-		.title('Edit Value')
+		.title('Editar Valor')
 		.resize(300, 165)
 		.controls([])
 		.center()
@@ -77,14 +77,14 @@ new explorer.window()
 				}
 			</style>
 			<div id="form">
-				Value name:<br>
+				Nombre del Valor:<br>
 				<input `+disabled+` type="text" value="`+key+`" id="key"><br><br>
-				Value data:<br>
+				Contenido del Valor:<br>
 				<input type="text" value="`+value+`" id="val">
 			</div>
 			<div id="butts">
 				<button id="ok">OK</button>
-				<button id="can">Cancel</button>
+				<button id="can">Cancelar</button>
 			</div>
 			`);
 			win2.body.find('#can').click(function() { win2.close(); });
