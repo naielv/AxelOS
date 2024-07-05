@@ -16,7 +16,7 @@ $('#bootlog').append('<pre>Platform...GOOD</pre>');
 function blueScreen(error) {
 	$('body').attr('style','');
 	$('body').css({'background-color':'blue','font-family':'Courier','color':'white'});
-	$('body').html('AxelOS (C) - 2017<br><br>A problem has been detected and AxelOS has been halted.<br><br>If this is the first time you\'ve seen this error screen, press Ctrl-R or F5. If this screen appears again, follow these steps:<br>Check to make sure any new software is properly written (HTTP errors, syntax errors, ect). If problems continue, try resetting AxelOS: <a style="color:white;" href="#" onclick="system.registry.set();window.location.reload();">(Reset)</a>.<br><br>Technical information:<br><br>');
+	$('body').html('Web14 <br><br>A problem has been detected and Web14 has been halted.<br><br>If this is the first time you\'ve seen this error screen, press Ctrl-R or F5. If this screen appears again, follow these steps:<br>Check to make sure any new software is properly written (HTTP errors, syntax errors, ect). If problems continue, try resetting AxelOS: <a style="color:white;" href="#" onclick="system.registry.set();window.location.reload();">(Reset)</a>.<br><br>Technical information:<br><br>');
 	$('body').append(error);
 }
 var legacySetInterval = setInterval;
