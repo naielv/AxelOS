@@ -1,4 +1,4 @@
-$('head').find('title').text('AxelOS');
+$('head').find('title').text('Web14');
 explorer.start.append([], [
 	{
 		title: 'Web14',
