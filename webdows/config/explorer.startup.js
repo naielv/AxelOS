@@ -1,7 +1,7 @@
 $('head').find('title').text('AxelOS');
 explorer.start.append([], [
 	{
-		title: 'AxelOS',
+		title: 'Web14',
 		icon: 'webdows/resources/icons/ques.ico',
 		callback: function() { system.loader('webdows/webver.js'); }
 	}, {
