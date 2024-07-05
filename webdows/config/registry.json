@@ -11,7 +11,7 @@
 		],
 		"startmenu": [
 			{
-				"title": "Sobre AxelOS",
+				"title": "Sobre Web14",
 				"icon": "webdows/resources/icons/info.ico",
 				"file": "webdows/webver.js"
 			}, {
