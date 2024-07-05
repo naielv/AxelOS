@@ -67,7 +67,7 @@ new explorer.window()
 		position:absolute;
 		line-height:95px;
 		color:white;
-		content:'AxelOS';
+		content:'Web14';
 		font-size:25px;
 		margin-left:280px;
 		animation:es5 3s ease-in-out;
