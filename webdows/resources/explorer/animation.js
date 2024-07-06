@@ -32,7 +32,7 @@ new explorer.window()
 		position:absolute;
 		width:400px;
 		height:100px;
-		background-image:url('webdows/resources/explorer/1.png');
+		background-image:url('webdows/resources/icons/rogo.png');
 		background-repeat:no-repeat;
 		background-size:100px 100px;
 	}
