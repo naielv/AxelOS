@@ -60,7 +60,7 @@ position:absolute;
 bottom:-13px;
 margin-left:-7px;
 background-size:100% 100%;
-background-image:url('so1.png');
+background-image:url('../../icons/rogo.png');
 opacity:1;
 image-rendering:-webkit-optimize-contrast;
 }
@@ -81,7 +81,7 @@ width:60px;
 height:60px;
 position:absolute;
 background-size:100% 100%;
-background-image:url('so2.png');
+background-image:url('../../icons/rogo.png');
 opacity:0;
 image-rendering:-webkit-optimize-contrast;
 }
@@ -91,7 +91,7 @@ width:60px;
 height:60px;
 position:absolute;
 background-size:100% 100%;
-background-image:url('so3.png');
+background-image:url('../../icons/rogo.png');
 opacity:0;
 image-rendering:-webkit-optimize-contrast;
 }
