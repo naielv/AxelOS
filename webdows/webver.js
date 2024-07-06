@@ -18,7 +18,7 @@ new explorer.window()
 	.html(`
 		<center>
 			<span style="font-size:33px;">
-				<img style="margin-right:5px;vertical-align:-20px;width:64px;height:64px;" src="webdows/resources/explorer/webdows/rogo.png">
+				<img style="margin-right:5px;vertical-align:-20px;width:64px;height:64px;" src="webdows/resources/icons/rogo.png">
 				Web14 <span id="lv">...</span>
 			</span>
 		</center>
