@@ -9,7 +9,7 @@ new explorer.window()
 .title('Bienvenid@ a Web14')
 .resize(570, 300)
 .center()
-.icon('webdows/resources/icons/logo.png')
+.icon('webdows/resources/icons/rogo.png')
 .controls(['min'])
 .callback(function() {
 	var butts = [
