@@ -17,7 +17,7 @@ $('#bootlog').append(`
 		left:calc(50% - 80px);
 		width:160px;
 		height:160px;
-		background-image:url('webdows/resources/icons/bvlg.svg');
+		background-image:url('webdows/resources/icons/rogo.png');
 		background-size:100% 100%;
 		background-color:white;
 		border-radius:80px;
