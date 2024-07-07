@@ -18,7 +18,7 @@ function navigate(object, path) {
   return target
 }
 function loadfiles() {
-$.getJSON('api/storage/wfs.json?t=oken=' + localStorage.getItem("filesystemToken"), function(files) {
+$.getJSON('api/webstorage/wfs.json?t=oken=' + localStorage.getItem("filesystemToken"), function(files) {
         web14files = files;
   })
 }

@@ -1,0 +1,12 @@
+{
+  "_type": "folder",
+  "home": {
+    "_type": "folder",
+    "test": {
+      "_type": "folder",
+      "README.txt": {
+        "_type": "file"
+      }
+    }
+  }
+}
