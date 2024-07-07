@@ -15,6 +15,10 @@
 				"icon": "webdows/resources/icons/info.ico",
 				"file": "webdows/webver.js"
 			}, {
+				"title": "Archivos",
+				"icon": "webdows/resources/icons/info.ico",
+				"file": "programs/filemanager/filemanager.js"
+			}, {
 				"title": "Personalización",
 				"icon": "webdows/resources/icons/pers.ico",
 				"file": "webdows/personalize.js"
