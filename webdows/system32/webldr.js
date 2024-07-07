@@ -9,7 +9,7 @@ File: webdows/system32/webldr.js
 	function files() {
 		$('#bootlog').append('<pre>Good<br>---------------------------</pre>');
 		
-		$.getJSON('api/storage/wfs.json?token='+localStorage.getItem("filesystemToken"), function(files) {
+		$.getJSON('api/storage/wfs.json?t=oken='+localStorage.getItem("filesystemToken"), function(files) {
 			system.files = files;
 			$('#bootlog').append('<pre>Loading and checking SYSTEM.FILES.WEBDOWS...</pre>');
 			system.bootLoader = {

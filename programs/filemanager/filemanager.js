@@ -15,7 +15,7 @@ new explorer.window()
 	var win = this;
 	var bod = this.body;
 	bod
-	.css({'font-size':'10px'})
-	.html(`<table><thead><tr><th colspan="2">Nombre</th><th>Tipo</th></tr></thead><tbody border="1" id='`+UID+`'></tbody></table>`);
+	.css({'font-size':'10px', 'color': 'black'})
+	.html(`<table border="1" width="100%"><thead><tr><th colspan="2">Nombre</th><th>Tipo</th></tr></thead><tbody id='`+UID+`'></tbody></table>`);
 	load_folder(UID, "")
 });

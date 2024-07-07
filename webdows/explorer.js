@@ -4,7 +4,7 @@ Liscense: MIT
 Author: krisdb2009
 File: webdows/explorer.js
 */
-
+var web14files = {}
 function navigate(object, path) {
   // Tab to edit
   var target = object
@@ -17,47 +17,48 @@ function navigate(object, path) {
   }
   return target
 }
-
-const filesdemo = {
-  "_type": "folder",
-  "home": {
-    "_type": "folder",
-    "test": {
-      "_type": "folder",
-      "README.txt": {
-        "_type": "file"
-      }
-    }
-  }
+function loadfiles() {
+$.getJSON('api/storage/wfs.json?t=oken=' + localStorage.getItem("filesystemToken"), function(files) {
+        web14files = files;
+  })
 }
-
 function load_folder(el, folder) {
   // Tab to edit
+  loadfiles()
   var output = document.getElementById(el)
-  output.innerHTML=""
-  var f = navigate(filesdemo, folder)
+  output.innerHTML = ""
+  var f = navigate(web14files, folder)
   for (const [key, value] of Object.entries(f)) {
-    var tr = document.createElement("tr")
-    var li = document.createElement("td")
-    var a = document.createElement("a")
-    tr.append(li)
-    li.append(a)
-    a.append(key)
-    var typed = document.createElement("td")
-    tr.append(typed)
-    if (value["_type"] == "folder") {
-      typed.innerText="Carpeta"
-      a.onclick = function() { load_folder(el, folder + "/" + key) };
-      a.innerText = key
-    }
-    else if (value["_type"] == "file") {
-      var ext = key.split(".")[-1]
-      typed.innerText="Archivo"
+    if (key !== "_type") {
+      var tr = document.createElement("tr")
+      var li = document.createElement("td")
+      var ico = document.createElement("td")
+      var icon = document.createElement("img")
+      icon.width = 20
+      ico.width = 20
+      ico.append(icon)
+      tr.append(ico)
+      var a = document.createElement("a")
+      tr.append(li)
+      li.append(a)
       a.append(key)
-      a.onclick = function() { load_file(folder + "/" + key) };
-      a.innerText = key
-    }
+      var typed = document.createElement("td")
+      tr.append(typed)
+      if (value["_type"] == "folder") {
+        icon.src = "webdows/resources/icons/fold.ico"
+        typed.innerText = "Carpeta"
+        a.onclick = function() { load_folder(el, folder + "/" + key) };
+        a.innerText = key
+      }
+      else if (value["_type"] == "file") {
+        var ext = key.split(".")[-1]
+        typed.innerText = "Archivo"
+        a.append(key)
+        a.onclick = function() { load_file(folder + "/" + key) };
+        a.innerText = key
+      }
       output.append(tr)
+    }
   }
 
 
