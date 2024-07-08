@@ -53,12 +53,26 @@ function loadfiles() {
 }
 loadfiles()
 
-function load_folder(el, folder) {
+function load_folder(el, folder, parwin) {
   // Tab to edit
   loadfiles()
+  parwin.title(folder.split("/").slice(-1))
   var output = document.getElementById(el)
   output.innerHTML = ""
   var f = navigate(web14files, folder)
+  var h_a = document.createElement("a")
+  var h_td = document.createElement('td')
+  var h_tr = document.createElement("tr")
+  h_td.colSpan=3
+  h_td.append(h_a)
+  h_a.onclick = function() {
+    var par = folder.split("/")
+    par.pop()
+    alert(par.join("/"))
+    load_folder(el, par.join("/"), parwin) };
+  h_a.innerText="../ (Carpeta Superior)"
+  h_tr.append(h_td)
+  output.append(h_tr)
   for (const [key, value] of Object.entries(f)) {
     if (key != "_type") {
       var tr = document.createElement("tr")
@@ -78,7 +92,7 @@ function load_folder(el, folder) {
       if (value["_type"] == "folder") {
         icon.src = "webdows/resources/icons/fold.ico"
         typed.innerText = "Carpeta"
-        a.onclick = function() { load_folder(el, folder + "/" + key) };
+        a.onclick = function() { load_folder(el, folder + "/" + key, parwin) };
       }
       else if (value["_type"] == "file") {
         var ext = key.split(".").slice(-1)

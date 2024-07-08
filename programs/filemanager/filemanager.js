@@ -10,12 +10,12 @@ new explorer.window()
 .resize(350, 480)
 .center()
 .title('Archivos')
-.icon('programs/filemanager/logo.ico')
+.icon('webdows/resources/icons/fold.ico')
 .callback(function() {
 	var win = this;
 	var bod = this.body;
 	bod
 	.css({'font-size':'10px', 'color': 'black'})
 	.html(`<table border="1" width="100%"><thead><tr><th colspan="2">Nombre</th><th>Tipo</th></tr></thead><tbody id='`+UID+`'></tbody></table>`);
-	load_folder(UID, "")
+	load_folder(UID, "",  this)
 });

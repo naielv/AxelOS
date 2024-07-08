@@ -16,7 +16,7 @@
         "file": "webdows/webver.js"
 			}, {
         "title": "Archivos",
-        "icon": "webdows/resources/icons/info.ico",
+        "icon": "webdows/resources/icons/fold.ico",
         "file": "programs/filemanager/filemanager.js"
 			}, {
         "title": "Personalización",
