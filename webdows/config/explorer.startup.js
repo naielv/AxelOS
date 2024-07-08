@@ -8,7 +8,7 @@ explorer.start.append([], [
 		title: 'Ajustes',
 		icon: 'webdows/resources/icons/cont.ico'
 	}, {
-		title: 'Este Navegador',
+		title: 'Este Equipo',
 		icon: 'webdows/resources/icons/scre.ico',
 		callback: function() { explorer.file_explorer(); },
 		context: [

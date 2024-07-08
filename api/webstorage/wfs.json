@@ -8,5 +8,8 @@
         "_type": "file"
       }
     }
+  },
+  "README.txt": {
+    "_type": "file"
   }
 }

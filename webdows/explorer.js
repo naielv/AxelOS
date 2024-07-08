@@ -5,6 +5,7 @@ Author: krisdb2009
 File: webdows/explorer.js
 */
 var web14files = {}
+
 function navigate(object, path) {
   // Tab to edit
   var target = object
@@ -17,11 +18,35 @@ function navigate(object, path) {
   }
   return target
 }
+var openEvent = undefined;
+
+function load_file(ext, path) {
+  // Tab to edit
+  if (ext == "js" || ext == "web14") {
+    system.loader(path)
+  }
+  else {
+    openEvent = path
+    system.loader(system.registry.get('HKEY_LOCAL_WEBDOWS/system/files/ext/' + ext + '/defaultProgram'))
+  }
+
+}
+function fetchFileIfNeeded(callback) {
+  if (openEvent != undefined) {
+    var rootpath = system.registry.get('HKEY_LOCAL_WEBDOWS/system/files/server');
+    $.get(rootpath + openEvent+'?token=' + localStorage.getItem("filesystemToken"),undefined, function(file) {
+    callback(file, openEvent)
+    openEvent = undefined
+  })
+  }
+}
 function loadfiles() {
-$.getJSON('api/webstorage/wfs.json?token=' + localStorage.getItem("filesystemToken"), function(files) {
-        web14files = files;
+  $.getJSON('api/webstorage/wfs.json?token=' + localStorage.getItem("filesystemToken"), function(files) {
+    web14files = files;
   })
 }
+loadfiles()
+
 function load_folder(el, folder) {
   // Tab to edit
   loadfiles()
@@ -29,7 +54,7 @@ function load_folder(el, folder) {
   output.innerHTML = ""
   var f = navigate(web14files, folder)
   for (const [key, value] of Object.entries(f)) {
-    if (key !== "_type") {
+    if (key != "_type") {
       var tr = document.createElement("tr")
       var li = document.createElement("td")
       var ico = document.createElement("td")
@@ -48,21 +73,20 @@ function load_folder(el, folder) {
         icon.src = "webdows/resources/icons/fold.ico"
         typed.innerText = "Carpeta"
         a.onclick = function() { load_folder(el, folder + "/" + key) };
-        a.innerText = key
       }
       else if (value["_type"] == "file") {
-        var ext = key.split(".")[-1]
+        var ext = key.split(".").slice(-1)
+        icon.src = system.registry.get('HKEY_LOCAL_WEBDOWS/system/files/ext/' + ext + '/icon');
         typed.innerText = "Archivo"
-        a.append(key)
-        a.onclick = function() { load_file(folder + "/" + key) };
-        a.innerText = key
+        a.onclick = function() {
+          load_file(ext, folder + "/" + key)
+        }
       }
       output.append(tr)
     }
   }
-
-
 }
+
 
 var explorer = {
   windows: {},

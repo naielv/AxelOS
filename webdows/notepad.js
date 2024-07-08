@@ -5,12 +5,14 @@ Author: krisdb2009
 Date: 03/14/16
 File: webdows/notepad.js
 */
+
 new explorer.window()
 .title('Bloc de notas')
 .icon('webdows/resources/icons/note.ico')
 .resize(500, 300)
 .center()
 .callback(function() {
+  var filepath = undefined
 	var bod = this.body;
 	var win = this;
 	var bar = [
@@ -22,7 +24,13 @@ new explorer.window()
 				}, {
 					title: 'Abrir...'
 				}, {
-					title: 'Guardar'
+					title: 'Guardar',
+					callback: function () {
+					  // Tab to edit
+					  if (this.filepath != "") {
+					   pushFile(this.filepath, bod.find("textarea").val())
+					  }
+					}
 				}, {}, {
 					title: 'Imprimir...',
 					callback: function() {
@@ -77,4 +85,9 @@ new explorer.window()
 	this.menuBar(bar);
 	bod.html('<textarea></textarea>');
 	bod.find('textarea').attr('style', 'overflow:scroll;top:0px;left:0px;position:absolute;border:0;margin:0;width:100%;height:100%;margin:0;padding:0;resize:none;');
+	fetchFileIfNeeded((file, path) => {
+	  bod.find('textarea').val(file)
+	  this.filepath = path
+	  this.title("Bloc de Notas - " + path)
+	})
 });

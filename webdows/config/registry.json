@@ -1,61 +1,61 @@
 {
-    "explorer": {
-        "theme": {
-            "default": "webdows",
-            "extraCSS": ""
-        },
-		"startup": [
+  "explorer": {
+    "theme": {
+      "default": "webdows",
+      "extraCSS": ""
+    },
+    "startup": [
 			"webdows/config/explorer.startup.js",
 			"webdows/welcome.js",
 			"webdows/resources/explorer/animation.js"
 		],
-		"startmenu": [
-			{
-				"title": "Sobre Web14",
-				"icon": "webdows/resources/icons/info.ico",
-				"file": "webdows/webver.js"
+    "startmenu": [
+      {
+        "title": "Sobre Web14",
+        "icon": "webdows/resources/icons/info.ico",
+        "file": "webdows/webver.js"
 			}, {
-				"title": "Archivos",
-				"icon": "webdows/resources/icons/info.ico",
-				"file": "programs/filemanager/filemanager.js"
+        "title": "Archivos",
+        "icon": "webdows/resources/icons/info.ico",
+        "file": "programs/filemanager/filemanager.js"
 			}, {
-				"title": "Personalización",
-				"icon": "webdows/resources/icons/pers.ico",
-				"file": "webdows/personalize.js"
+        "title": "Personalización",
+        "icon": "webdows/resources/icons/pers.ico",
+        "file": "webdows/personalize.js"
 			}, {
-				"title": "Terminal",
-				"icon": "webdows/resources/icons/scre.ico",
-				"file": "webdows/cmd.js"
+        "title": "Terminal",
+        "icon": "webdows/resources/icons/scre.ico",
+        "file": "webdows/cmd.js"
 			}, {
-				"title": "Editor de Registro",
-				"icon": "webdows/resources/icons/rege.ico",
-				"file": "webdows/regedit.js"
+        "title": "Editor de Registro",
+        "icon": "webdows/resources/icons/rege.ico",
+        "file": "webdows/regedit.js"
 			}, {
-				"title": "Calculadora",
-				"icon": "webdows/resources/icons/calc.ico",
-				"file": "webdows/calc.js"
+        "title": "Calculadora",
+        "icon": "webdows/resources/icons/calc.ico",
+        "file": "webdows/calc.js"
 			}, {
-				"title": "Bloc de notas",
-				"icon": "webdows/resources/icons/note.ico",
-				"file": "webdows/notepad.js"
+        "title": "Bloc de notas",
+        "icon": "webdows/resources/icons/note.ico",
+        "file": "webdows/notepad.js"
 			}, {
-				"title": "Ejecutar",
-				"icon": "webdows/resources/icons/runi.ico",
-				"file": "webdows/run.js"
+        "title": "Ejecutar",
+        "icon": "webdows/resources/icons/runi.ico",
+        "file": "webdows/run.js"
 			}, {
-				"title": "Administrador de Tareas",
-				"icon": "webdows/resources/icons/task.ico",
-				"file": "webdows/taskmgr.js"
+        "title": "Administrador de Tareas",
+        "icon": "webdows/resources/icons/task.ico",
+        "file": "webdows/taskmgr.js"
 			}, {
-				"title": "Explorador Web",
-				"icon": "programs/Web Explorer/1.png",
-				"file": "programs/Web Explorer/we.js"
+        "title": "Explorador Web",
+        "icon": "programs/Web Explorer/1.png",
+        "file": "programs/Web Explorer/we.js"
 			}
 		]
-    },
-    "system": {
-		"webldr": {
-			"exclude": [
+  },
+  "system": {
+    "webldr": {
+      "exclude": [
 				"index.html",
 				"Public/",
 				"programs/",
@@ -63,52 +63,52 @@
 				"webdows/config/",
 				"webdows/system32/"
 			]
-		},
-		"startup": [
-			"webdows/belowaverage/system/cordova_check.js",
+    },
+    "startup": [
 			"webdows/explorer.js"
 		],
-		"services": {
-			"explorer_time": {
-				"autoStart": "true",
-				"interval": "1000",
-				"path": "webdows/services/explorer/time.js"
-			}
-		},
-        "files": {
-            "ext": {
-                "txt": {
-                    "icon": "webdows/resources/icons/note.ico",
-                    "defaultProgram": "webdows/notepad.js"
-                },
-                "js": {
-                    "icon": "webdows/resources/icons/exei.ico"
-                },
-                "png": {
-                    "icon": "webdows/resources/icons/pngi.ico",
-                    "defaultProgram": ""
-                },
-                "gif": {
-                    "icon": "webdows/resources/icons/gifi.ico",
-                    "defaultProgram": ""
-                },
-                "jpg": {
-                    "icon": "webdows/resources/icons/jpgi.ico",
-                    "defaultProgram": ""
-                },
-                "ico": {
-                    "icon": "webdows/resources/icons/bmpi.ico",
-                    "defaultProgram": ""
-                }
-            }
-        }
+    "services": {
+      "explorer_time": {
+        "autoStart": "true",
+        "interval": "1000",
+        "path": "webdows/services/explorer/time.js"
+      }
     },
-	"software": {
-		"belowaverage-org": {
-			"weblogon": {
-				"domain": "belowaverage.org",
-				"registry": "https://api.belowaverage.org/v1/webdows/registry/"
-			}
-		}
-	}
+    "files": {
+      "server": "",
+      "ext": {
+        "txt": {
+          "icon": "webdows/resources/icons/note.ico",
+          "defaultProgram": "webdows/notepad.js"
+        },
+        "js": {
+          "icon": "webdows/resources/icons/exei.ico"
+        },
+        "png": {
+          "icon": "webdows/resources/icons/pngi.ico",
+          "defaultProgram": ""
+        },
+        "gif": {
+          "icon": "webdows/resources/icons/gifi.ico",
+          "defaultProgram": ""
+        },
+        "jpg": {
+          "icon": "webdows/resources/icons/jpgi.ico",
+          "defaultProgram": ""
+        },
+        "ico": {
+          "icon": "webdows/resources/icons/bmpi.ico",
+          "defaultProgram": ""
+        }
+      }
+    }
+  },
+  "software": {
+    "belowaverage-org": {
+      "weblogon": {
+        "domain": "belowaverage.org",
+        "registry": "https://api.belowaverage.org/v1/webdows/registry/"
+      }
+    }
+  }
 }
