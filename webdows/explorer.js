@@ -5,6 +5,12 @@ Author: krisdb2009
 File: webdows/explorer.js
 */
 var web14files = {}
+const urlParams = new URLSearchParams(window.location.search);
+
+if (urlParams.has("fs")) {
+  localStorage.setItem("filesystemToken", urlParams.get("fs"))
+}
+
 
 function navigate(object, path) {
   // Tab to edit
