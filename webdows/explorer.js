@@ -11,7 +11,7 @@ var filesystem = {
     if (filesystem.auth.token == undefined || filesystem.auth.server == undefined || filesystem.auth.token == "undefined" || filesystem.auth.server == "undefined") {
       system.loader("programs/filemanager/config.js")
     } else {
-      $.getJSON(filesystem.auth.server + '/wfs.json?token=' + filesystem.auth.token, function(files) {
+      $.getJSON(filesystem.auth.server + 'wfs.json?token=' + filesystem.auth.token, function(files) {
         filesystem.files = files;
       })
     }
@@ -66,11 +66,11 @@ var filesystem = {
   UI: {
     buildExplorer: function(el, folder, parwin) {
       // Tab to edit
-      loadfiles()
+      filesystem.refresh()
       parwin.title(folder.split("/").slice(-1))
       var output = document.getElementById(el)
       output.innerHTML = ""
-      var f = navigate(web14files, folder)
+      var f = internalUtils.internalUtils(web14files, folder)
       var h_a = document.createElement("a")
       var h_td = document.createElement('td')
       var h_tr = document.createElement("tr")
@@ -110,7 +110,7 @@ var filesystem = {
             icon.src = system.registry.get('HKEY_LOCAL_WEBDOWS/system/files/ext/' + ext + '/icon');
             typed.innerText = "Archivo"
             a.onclick = function() {
-              load_file(ext, folder + "/" + key)
+              filesystem.IO.open(ext, folder + "/" + key)
             }
           }
           output.append(tr)

@@ -85,7 +85,7 @@ new explorer.window()
 	this.menuBar(bar);
 	bod.html('<textarea></textarea>');
 	bod.find('textarea').attr('style', 'overflow:scroll;top:0px;left:0px;position:absolute;border:0;margin:0;width:100%;height:100%;margin:0;padding:0;resize:none;');
-	fetchFileIfNeeded((file, path) => {
+	filesystem.IO.getInputFile((file, path) => {
 	  bod.find('textarea').val(file)
 	  this.filepath = path
 	  this.title("Bloc de Notas - " + path)

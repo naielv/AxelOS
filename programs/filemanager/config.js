@@ -24,5 +24,7 @@ new explorer.window()
     document.getElementById(UID3).onclick = function() {
       system.registry.set('HKEY_LOCAL_WEBDOWS/system/files/token', document.getElementById(UID1).value)
       system.registry.set('HKEY_LOCAL_WEBDOWS/system/files/server', "https://fs.web14.eu")
+      win.close();
+      location.reload(true);
     }
   });
