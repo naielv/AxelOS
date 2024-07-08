@@ -4,108 +4,130 @@ Liscense: MIT
 Author: krisdb2009
 File: webdows/explorer.js
 */
-var web14files = {}
-const urlParams = new URLSearchParams(window.location.search);
 
-if (urlParams.has("fs")) {
-  localStorage.setItem("filesystemToken", urlParams.get("fs"))
-}
+var filesystem = {
+  files: {},
+  refresh: function() {
+    if (filesystem.auth.token == undefined || filesystem.auth.server == undefined || filesystem.auth.token == "undefined" || filesystem.auth.server == "undefined") {
+      system.loader("programs/filemanager/config.js")
+    } else {
+      $.getJSON(filesystem.auth.server + '/wfs.json?token=' + filesystem.auth.token, function(files) {
+        filesystem.files = files;
+      })
+    }
+  },
+  auth: {
+    token: system.registry.get('HKEY_LOCAL_WEBDOWS/system/files/token'),
+    server: system.registry.get('HKEY_LOCAL_WEBDOWS/system/files/server'),
+  },
+  flags: {
+    currentOpenPath: undefined,
+  },
+  IO: {
+    getInputFile: function(callback, body = true) {
+      if (filesystem.flags.currentOpenPath != undefined) {
+        if (body) {
+          $.get(filesystem.auth.server + filesystem.flags.currentOpenPath + '?token=' + filesystem.auth.token, undefined, function(content) {
+            callback(content, filesystem.flags.currentOpenPath)
 
-
-function navigate(object, path) {
-  // Tab to edit
-  var target = object
-  var spath = path.split("/")
-  if (spath[0] == "") { spath = spath.slice(1) }
-  if (spath != []) {
-    spath.forEach((item) => {
-      target = target[item]
-    })
-  }
-  return target
-}
-var openEvent = undefined;
-
-function load_file(ext, path) {
-  // Tab to edit
-  if (ext == "js" || ext == "web14") {
-    system.loader(path)
-  }
-  else {
-    openEvent = path
-    system.loader(system.registry.get('HKEY_LOCAL_WEBDOWS/system/files/ext/' + ext + '/defaultProgram'))
-  }
-
-}
-function fetchFileIfNeeded(callback) {
-  if (openEvent != undefined) {
-    var rootpath = system.registry.get('HKEY_LOCAL_WEBDOWS/system/files/server');
-    $.get(rootpath + openEvent+'?token=' + localStorage.getItem("filesystemToken"),undefined, function(file) {
-    callback(file, openEvent)
-    openEvent = undefined
-  })
-  }
-}
-function loadfiles() {
-  $.getJSON('api/webstorage/wfs.json?token=' + localStorage.getItem("filesystemToken"), function(files) {
-    web14files = files;
-  })
-}
-loadfiles()
-
-function load_folder(el, folder, parwin) {
-  // Tab to edit
-  loadfiles()
-  parwin.title(folder.split("/").slice(-1))
-  var output = document.getElementById(el)
-  output.innerHTML = ""
-  var f = navigate(web14files, folder)
-  var h_a = document.createElement("a")
-  var h_td = document.createElement('td')
-  var h_tr = document.createElement("tr")
-  h_td.colSpan=3
-  h_td.append(h_a)
-  h_a.onclick = function() {
-    var par = folder.split("/")
-    par.pop()
-    alert(par.join("/"))
-    load_folder(el, par.join("/"), parwin) };
-  h_a.innerText="../ (Carpeta Superior)"
-  h_tr.append(h_td)
-  output.append(h_tr)
-  for (const [key, value] of Object.entries(f)) {
-    if (key != "_type") {
-      var tr = document.createElement("tr")
-      var li = document.createElement("td")
-      var ico = document.createElement("td")
-      var icon = document.createElement("img")
-      icon.width = 20
-      ico.width = 20
-      ico.append(icon)
-      tr.append(ico)
-      var a = document.createElement("a")
-      tr.append(li)
-      li.append(a)
-      a.append(key)
-      var typed = document.createElement("td")
-      tr.append(typed)
-      if (value["_type"] == "folder") {
-        icon.src = "webdows/resources/icons/fold.ico"
-        typed.innerText = "Carpeta"
-        a.onclick = function() { load_folder(el, folder + "/" + key, parwin) };
+          })
+        } else {
+          callback(undefined, filesystem.flags.currentOpenPath)
+        }
+        filesystem.flags.currentOpenPath = undefined
       }
-      else if (value["_type"] == "file") {
-        var ext = key.split(".").slice(-1)
-        icon.src = system.registry.get('HKEY_LOCAL_WEBDOWS/system/files/ext/' + ext + '/icon');
-        typed.innerText = "Archivo"
-        a.onclick = function() {
-          load_file(ext, folder + "/" + key)
+    },
+    open: function(ext, path) {
+      // Tab to edit
+      if (ext == "js" || ext == "web14") {
+        system.loader(path)
+      }
+      else {
+        filesystem.currentOpenEvent = path
+        system.loader(system.registry.get('HKEY_LOCAL_WEBDOWS/system/files/ext/' + ext + '/defaultProgram'))
+      }
+
+    }
+  },
+  internalUtils: {
+    pathSelector: function(object, path) {
+      // Tab to edit
+      var target = object
+      var spath = path.split("/")
+      if (spath[0] == "") { spath = spath.slice(1) }
+      if (spath != []) {
+        spath.forEach((item) => {
+          target = target[item]
+        })
+      }
+      return target
+    },
+  },
+  UI: {
+    buildExplorer: function(el, folder, parwin) {
+      // Tab to edit
+      loadfiles()
+      parwin.title(folder.split("/").slice(-1))
+      var output = document.getElementById(el)
+      output.innerHTML = ""
+      var f = navigate(web14files, folder)
+      var h_a = document.createElement("a")
+      var h_td = document.createElement('td')
+      var h_tr = document.createElement("tr")
+      h_td.colSpan = 3
+      h_td.append(h_a)
+      h_a.onclick = function() {
+        var par = folder.split("/")
+        par.pop()
+        load_folder(el, par.join("/"), parwin)
+      };
+      h_a.innerText = "../ (Carpeta Superior)"
+      h_tr.append(h_td)
+      output.append(h_tr)
+      for (const [key, value] of Object.entries(f)) {
+        if (key != "_type") {
+          var tr = document.createElement("tr")
+          var li = document.createElement("td")
+          var ico = document.createElement("td")
+          var icon = document.createElement("img")
+          icon.width = 20
+          ico.width = 20
+          ico.append(icon)
+          tr.append(ico)
+          var a = document.createElement("a")
+          tr.append(li)
+          li.append(a)
+          a.append(key)
+          var typed = document.createElement("td")
+          tr.append(typed)
+          if (value["_type"] == "folder") {
+            icon.src = "webdows/resources/icons/fold.ico"
+            typed.innerText = "Carpeta"
+            a.onclick = function() { load_folder(el, folder + "/" + key, parwin) };
+          }
+          else if (value["_type"] == "file") {
+            var ext = key.split(".").slice(-1)
+            icon.src = system.registry.get('HKEY_LOCAL_WEBDOWS/system/files/ext/' + ext + '/icon');
+            typed.innerText = "Archivo"
+            a.onclick = function() {
+              load_file(ext, folder + "/" + key)
+            }
+          }
+          output.append(tr)
         }
       }
-      output.append(tr)
     }
   }
 }
+filesystem.refresh()
+// const urlParams = new URLSearchParams(window.location.search);
+
+// if (urlParams.has("fs")) {
+//   localStorage.setItem("filesystemToken", urlParams.get("fs"))
+// }
+
+
+
 
 
 var explorer = {

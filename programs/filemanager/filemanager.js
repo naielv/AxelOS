@@ -16,6 +16,6 @@ new explorer.window()
 	var bod = this.body;
 	bod
 	.css({'font-size':'10px', 'color': 'black'})
-	.html(`<table border="1" width="100%"><thead><tr><th colspan="2">Nombre</th><th>Tipo</th></tr></thead><tbody id='`+UID+`'></tbody></table>`);
-	load_folder(UID, "",  this)
+	.html(`<table border="0" width="100%"><thead><tr style="background-color: blue; color: white" ><th colspan="2">Nombre</th><th>Tipo</th></tr></thead><tbody id='`+UID+`'></tbody></table>`);
+	filesystem.UI.buildExplorer(UID, "",  this)
 });
