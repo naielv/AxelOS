@@ -11,7 +11,7 @@ var filesystem = {
     if (filesystem.auth.token == undefined || filesystem.auth.server == undefined || filesystem.auth.token == "undefined" || filesystem.auth.server == "undefined") {
       system.loader("programs/filemanager/config.js")
     } else {
-      $.getJSON(filesystem.auth.server + '/wfs.json?token=' + filesystem.auth.token, function(files) {
+      $.getJSON(filesystem.auth.server + 'wfs.json?token=' + filesystem.auth.token, function(files) {
         filesystem.files = files;
       })
     }
@@ -43,7 +43,7 @@ var filesystem = {
         system.loader(path)
       }
       else {
-        filesystem.currentOpenEvent = path
+        filesystem.flags.currentOpenPath = path
         system.loader(system.registry.get('HKEY_LOCAL_WEBDOWS/system/files/ext/' + ext + '/defaultProgram'))
       }
 
@@ -66,11 +66,11 @@ var filesystem = {
   UI: {
     buildExplorer: function(el, folder, parwin) {
       // Tab to edit
-      loadfiles()
+      filesystem.refresh()
       parwin.title(folder.split("/").slice(-1))
       var output = document.getElementById(el)
       output.innerHTML = ""
-      var f = navigate(web14files, folder)
+      var f = filesystem.internalUtils.pathSelector(filesystem.files, folder)
       var h_a = document.createElement("a")
       var h_td = document.createElement('td')
       var h_tr = document.createElement("tr")
@@ -79,7 +79,7 @@ var filesystem = {
       h_a.onclick = function() {
         var par = folder.split("/")
         par.pop()
-        load_folder(el, par.join("/"), parwin)
+        filesystem.UI.buildExplorer(el, par.join("/"), parwin)
       };
       h_a.innerText = "../ (Carpeta Superior)"
       h_tr.append(h_td)
@@ -103,14 +103,14 @@ var filesystem = {
           if (value["_type"] == "folder") {
             icon.src = "webdows/resources/icons/fold.ico"
             typed.innerText = "Carpeta"
-            a.onclick = function() { load_folder(el, folder + "/" + key, parwin) };
+            a.onclick = function() { filesystem.UI.buildExplorer(el, folder + "/" + key, parwin) };
           }
           else if (value["_type"] == "file") {
             var ext = key.split(".").slice(-1)
             icon.src = system.registry.get('HKEY_LOCAL_WEBDOWS/system/files/ext/' + ext + '/icon');
             typed.innerText = "Archivo"
             a.onclick = function() {
-              load_file(ext, folder + "/" + key)
+              filesystem.IO.open(ext, folder + "/" + key)
             }
           }
           output.append(tr)
