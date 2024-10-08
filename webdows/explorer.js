@@ -100,12 +100,12 @@ var filesystem = {
           a.append(key)
           var typed = document.createElement("td")
           tr.append(typed)
-          if (value["_type"] == "folder") {
+          if (typeof(value) == "object") {
             icon.src = "webdows/resources/icons/fold.ico"
             typed.innerText = "Carpeta"
             a.onclick = function() { filesystem.UI.buildExplorer(el, folder + "/" + key, parwin) };
           }
-          else if (value["_type"] == "file") {
+          else {
             var ext = key.split(".").slice(-1)
             icon.src = system.registry.get('HKEY_LOCAL_WEBDOWS/system/files/ext/' + ext + '/icon');
             typed.innerText = "Archivo"
